@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Star Wars - Express</title>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+<div class="container">
+    <div class="jumbotron" id="reservationJumbotron">
+        <h1>Make Your Reservation</h1>
+        <hr>
+        <a href="/tables.html"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-eye-open"></span>View Tables</button></a>
+        <a href="/index.html"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-home"></span>Home</button></a>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Table Reservation</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <form method="POST" role="form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input type="text" class="form-control" id="phoneNumber">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="uniqueID">Unique ID</label>
+                            <input type="text" class="form-control" id="uniqueID">
+                        </div>
+                    </form>
+                </div>
+                <footer class="footer">
+                    <div class="container">
+                        <p>
+                            <a href="/api/tables">API Table Link</a>
+                            <a href="/api/waitlist">API Wait List</a>
+                        </p>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
