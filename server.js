@@ -58,7 +58,7 @@ app.post('/tables', function(){
   res.json(true)
 })
 
-app.get("/reserve", function(req, res) {
+app.post("/reserve", function(req, res) {
   //res.json(reservations);
   res.sendFile(path.join(__dirname, "reserve.html"));
 });
