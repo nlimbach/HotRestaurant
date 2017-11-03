@@ -17,26 +17,12 @@ app.use(bodyParser.json());
 // =============================================================
 var reservations = [
   {
-    routeName: "yoda",
-    name: "Yoda",
-    role: "Jedi Master",
-    age: 900,
-    forcePoints: 2000
+    name: "",
+    phoneNumber: "",
+    email: "",
+    uniqueID: ""
   },
-  {
-    routeName: "darthmaul",
-    name: "Darth Maul",
-    role: "Sith Lord",
-    age: 200,
-    forcePoints: 1200
-  },
-  {
-    routeName: "obiwankenobi",
-    name: "Obi Wan Kenobi",
-    role: "Jedi Master",
-    age: 55,
-    forcePoints: 1350
-  }
+  
 ];
 
 // Routes
@@ -52,16 +38,26 @@ app.get("/tables", function(req, res) {
 });
 
 app.get("/reserve", function(req, res) {
+  res.json(reservations);
   res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
-// Get all characters
-app.get("/all", function(req, res) {
-  res.json(characters);
+
+
+app.post("/api/tables", function(req, res) {
+  // req.body hosts is equal to the JSON post sent from the user
+  // This works because of our body-parser middleware
+  var newreservation = req.body;
+  
 });
 
-// Search for Specific Character (or all characters) - provides JSON
-app.get("/api/:characters?", function(req, res) {
+// Starts the server to begin listening
+// =============================================================
+app.listen(port, function() {
+  console.log("App listening on PORT " + port);
+});
+
+/*app.get("/api/:characters?", function(req, res) {
   var chosen = req.params.characters;
 
   if (chosen) {
@@ -75,24 +71,6 @@ app.get("/api/:characters?", function(req, res) {
     return res.json(false);
   }
   return res.json(characters);
-});
+});*/
 
-// Create New Characters - takes in JSON input
-app.post("/api/new", function(req, res) {
-  // req.body hosts is equal to the JSON post sent from the user
-  // This works because of our body-parser middleware
-  var newcharacter = req.body;
-  newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
 
-  console.log(newcharacter);
-
-  characters.push(newcharacter);
-
-  res.json(newcharacter);
-});
-
-// Starts the server to begin listening
-// =============================================================
-app.listen(port, function() {
-  console.log("App listening on PORT " + port);
-});
