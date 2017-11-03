@@ -25,15 +25,7 @@ var reservations = [
   
 ];
 
-var waitlist = [
-  {
-    name: "",
-    phoneNumber: "",
-    email: "",
-    uniqueID: ""
-  },
-  
-];
+
 
 // Routes
 // =============================================================
