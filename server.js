@@ -39,7 +39,7 @@ app.get("/tables", function(req, res) {
 });
 
 
-app.post('/tables', function(){
+app.post('/tables', function(req,res){
   var name = req.body.name;
   var email = req.body.email;
   var phonenumber = req.body.phoneNumber;
@@ -52,13 +52,13 @@ app.post('/tables', function(){
     uniqueID: ""
   };
 
-
+console.log("hey");
   reservations.push(resObj);
 
   res.json(true)
 })
 
-app.post("/reserve", function(req, res) {
+app.get("/reserve", function(req, res) {
   //res.json(reservations);
   res.sendFile(path.join(__dirname, "reserve.html"));
 });
@@ -69,7 +69,6 @@ app.post("/tables", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body-parser middleware
   //var newreservation = req.body;
-    console.log(req);
   res.json(reservations);
   
 });
