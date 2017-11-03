@@ -38,7 +38,7 @@ app.get("/tables", function(req, res) {
 });
 
 app.get("/reserve", function(req, res) {
-    res.json(reservations);
+   // res.json(reservations);
     res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
