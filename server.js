@@ -16,13 +16,23 @@ app.use(bodyParser.json());
 // restaurant data
 // =============================================================
 var reservations = [
-    {
-        name: "",
-        phoneNumber: "",
-        email: "",
-        uniqueID: ""
-    },
+  {
+    name: "",
+    phoneNumber: "",
+    email: "",
+    uniqueID: ""
+  },
+  
+];
 
+var waitlist = [
+  {
+    name: "",
+    phoneNumber: "",
+    email: "",
+    uniqueID: ""
+  },
+  
 ];
 
 // Routes
@@ -30,37 +40,44 @@ var reservations = [
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.get("/tables", function(req, res) {
-    res.sendFile(path.join(__dirname, "tables.html"));
+  res.sendFile(path.join(__dirname, "tables.html"));
+  var name = req.body.name;
+  var email = req.body.email;
+  var phonenumber = req.body.phoneNumber;
+  var uniqueID = req.body.uniqueID;
 });
 
 app.get("/reserve", function(req, res) {
-    //res.json(reservations);
-    res.sendFile(path.join(__dirname, "reserve.html"));
+  res.json(reservations);
+  res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
 
 
 app.post("/api/tables", function(req, res) {
-    // req.body hosts is equal to the JSON post sent from the user
-    // This works because of our body-parser middleware
-    var newreservation = req.body;
-
+  // req.body hosts is equal to the JSON post sent from the user
+  // This works because of our body-parser middleware
+  var newreservation = req.body;
+  res.json(newreservation);
+  
 });
 
 // Starts the server to begin listening
 // =============================================================
 app.listen(port, function() {
-    console.log("App listening on PORT " + port);
+  console.log("App listening on PORT " + port);
 });
 
 /*app.get("/api/:characters?", function(req, res) {
   var chosen = req.params.characters;
+
   if (chosen) {
     console.log(chosen);
+
     for (var i = 0; i < characters.length; i++) {
       if (chosen === characters[i].routeName) {
         return res.json(characters[i]);
@@ -70,3 +87,5 @@ app.listen(port, function() {
   }
   return res.json(characters);
 });*/
+
+
