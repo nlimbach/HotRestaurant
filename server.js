@@ -21,11 +21,9 @@ var reservations = [
     phoneNumber: "",
     email: "",
     uniqueID: ""
-  },
+  },  
   
 ];
-
-
 
 // Routes
 // =============================================================
@@ -37,24 +35,41 @@ app.get("/", function(req, res) {
 
 app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
+  
+});
+
+
+app.post('/tables', function(){
   var name = req.body.name;
   var email = req.body.email;
   var phonenumber = req.body.phoneNumber;
   var uniqueID = req.body.uniqueID;
-});
+
+  var resObj = {
+    name: "",
+    phoneNumber: "",
+    email: "",
+    uniqueID: ""
+  };
+
+
+  reservations.push(resObj);
+
+  res.json(true)
+})
 
 app.get("/reserve", function(req, res) {
-  res.json(reservations);
+  //res.json(reservations);
   res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
 
 
-app.post("/api/tables", function(req, res) {
+app.get("/api/tables", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body-parser middleware
-  var newreservation = req.body;
-  res.json(newreservation);
+  //var newreservation = req.body;
+  res.json(reservations);
   
 });
 
